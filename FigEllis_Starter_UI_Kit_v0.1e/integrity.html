@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fig Ellis · Integrity Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: 'Helvetica Now Condensed Light', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border-bottom: 1px solid var(--line-weak); text-align: left; }
+    .status-pass { opacity: 0.95; }
+    .stream { max-height: 260px; overflow: auto; }
+  </style>
+</head>
+<body class="bg-balanced">
+  <header class="topbar">
+    <span class="brand">FIG ELLIS</span>
+    <nav class="phases">Source · Frequency · Fieldworks · Echo</nav>
+    <div class="user"><span class="tier">A0 · OPERATOR</span></div>
+  </header>
+
+  <aside class="rail">
+    <a href="index.html">Library</a>
+    <a href="library.html">Member Grid</a>
+    <a href="account.html">Account</a>
+    <a class="active" href="integrity.html">Integrity</a>
+  
+    <a href="tiers.html">Tiers</a>
+    <a href="changelog.html">Changelog</a>
+  </aside>
+
+  <main class="canvas">
+    <h1>Integrity · v1.0 (Blueprint Stub)</h1>
+    <p class="meta">Operator UI for audits, diffs, re-sign, and quarantine.</p>
+
+    <section class="grid3">
+      <div class="card open">
+        <h3>System Health</h3>
+        <p>Integrity holds.</p>
+      </div>
+      <div class="card open">
+        <h3>Counts</h3>
+        <p>Pass 6 · Mod 0 · Miss 0 · Ghost 0 · Mismatch 0</p>
+      </div>
+      <div class="card open">
+        <h3>Severity</h3>
+        <p>L1 · Informational</p>
+      </div>
+    </section>
+
+    <section class="card frame" style="margin-top:24px;">
+      <h2>Bundles</h2>
+      <table>
+        <thead>
+          <tr><th>Bundle</th><th>Version</th><th>Status</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Starter UI Kit</td><td>v0.1b</td><td class="status-pass">✅ Pass</td>
+            <td>
+              <button class="btn-outline">Verify</button>
+              <button class="btn-outline">Re-Sign</button>
+              <button class="btn-outline">Open</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card open" style="margin-top:24px;">
+      <h2>Event Stream</h2>
+      <div class="stream">
+        <p>[11:22] AUDIT • Utilities • v0.1b • Pass (0 changes)</p>
+        <p>[11:18] AUDIT • Utilities • v0.1a • Partial (1 Mod)</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Fig Ellis · Environment v1.0 · Integrity: Restoration-Complete v1.1</small>
+  </footer>
+</body>
+</html>

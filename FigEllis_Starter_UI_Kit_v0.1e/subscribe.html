@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fig Ellis · Step Closer</title>
+  <meta name="description" content="Join the Fig Ellis field — cross from guest to member, where creation lives in motion.">
+  <meta property="og:title" content="Fig Ellis · Step Closer">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: 'Helvetica Now Condensed Light', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .center { max-width: 520px; margin: 48px auto; padding: 24px; position: relative; }
+    .form { margin-top: 16px; }
+    label { display:block; margin: 10px 0 6px; }
+    input, textarea {
+      width: 100%; background: transparent; color: var(--text);
+      border: 1px solid var(--line-mid); border-radius: 4px; padding: 10px 12px;
+    }
+    textarea { min-height: 120px; }
+    .row { display:flex; gap:10px; }
+    .row .half { flex:1; }
+    .checkbox { display:flex; align-items:center; gap:8px; margin-top: 10px; }
+    .cta { margin-top: 16px; display:flex; gap:10px; }
+    /* Gate Circuit Accent (subtle) */
+    .circuit {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      bottom: -20px; width: 2px; height: 120px; background: rgba(197,167,108,0.50);
+    }
+    .node { position:absolute; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border: 1px solid rgba(197,167,108,0.60); border-radius: 50%; background: transparent; }
+    .node.top { bottom: 92px; }
+    .node.mid { bottom: 40px; }
+    .a11y { margin-top: 18px; opacity: 0.9; font-size: 14px; }
+    .notice { margin-top: 8px; }
+  </style>
+</head>
+<body class="bg-balanced">
+  <header class="topbar">
+    <span class="brand">FIG ELLIS</span>
+    <nav class="phases">Source · Frequency · Fieldworks · Echo</nav>
+    <div class="user"><span class="tier">A5 · GUEST</span></div>
+  </header>
+
+  <aside class="rail">
+    <a href="index.html">Library</a>
+    <a href="library.html">Member Grid</a>
+    <a href="account.html">Account</a>
+    <a class="active" href="subscribe.html">Subscribe</a>
+  
+    <a href="tiers.html">Tiers</a>
+    <a href="changelog.html">Changelog</a>
+  </aside>
+
+  <main class="canvas">
+    <section class="card open center" aria-labelledby="subscribe-title">
+      <h1 id="subscribe-title">Step Closer.</h1>
+      <p>You’ve reached the edge of the public field. Members see the full map — join to walk beyond the veil.</p>
+
+      <div class="card frame" style="margin-top:16px;">
+        <p><strong>Tier A5 · Guest</strong> → <strong>Tier A4 · Member</strong></p>
+      </div>
+
+      <form class="form" onsubmit="event.preventDefault(); onSubmit();">
+        <div class="row">
+          <div class="half">
+            <label for="name">Name</label>
+            <input id="name" type="text" required>
+          </div>
+          <div class="half">
+            <label for="email">Email</label>
+            <input id="email" type="email" required>
+          </div>
+        </div>
+
+        <label for="intent">Tell us what you’re working toward.</label>
+        <textarea id="intent" required></textarea>
+
+        <div class="checkbox">
+          <input id="ack" type="checkbox" required aria-required="true">
+          <label for="ack">Each tier is a responsibility, not a reward.</label>
+        </div>
+
+        <div class="cta">
+          <button class="btn-outline" type="submit">Send Request</button>
+          <a class="btn-outline" href="index.html" role="button">Learn About Tiers</a>
+        </div>
+
+        <p id="result" class="notice" aria-live="polite"></p>
+        <div class="a11y">This gate is designed for calm focus. All fields are keyboard-accessible; motion is minimal by design.</div>
+      </form>
+
+      <!-- Circuit accent (subtle, decorative) -->
+      <div class="circuit"></div>
+      <div class="node top" aria-hidden="true"></div>
+      <div class="node mid" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Fig Ellis · Access Node v0.1c · Integrity: Restoration-Complete v1.1</small>
+  </footer>
+
+  <script>
+    function onSubmit(){
+      const ok = document.getElementById('name').value && document.getElementById('email').value && document.getElementById('intent').value && document.getElementById('ack').checked;
+      const result = document.getElementById('result');
+      if(ok){
+        result.textContent = "The veil thins. We’ll be in touch.";
+      } else {
+        result.textContent = "Something interrupted the signal — try again.";
+      }
+    }
+  </script>
+</body>
+</html>

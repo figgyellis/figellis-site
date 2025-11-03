@@ -1,0 +1,18 @@
+FigEllis_Starter_UI_Kit_v0.1a
+Generated: 2025-11-03 18:27:10
+Files:
+- index.html
+- account.html
+- library.html
+- styles.css
+- README_FOR_HUMANS.md
+- PACKAGE_INDEX.md
+
+- integrity.html
+
+- subscribe.html
+
+- tiers.html
+- changelog.html
+
+- 404.html
