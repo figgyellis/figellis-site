@@ -1,0 +1,13 @@
+# Ignore archive and scratch folders
+_archive_starter/
+archive/
+scratch/
+temp/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore backup zips and logs
+*.zip
+*.log
