@@ -1,20 +1,25 @@
 /* ======================================================
-   Fig Ellis System — Fields.css
-   Purpose: Defines global root colors and field modes.
+   Fig Ellis System — fields.css
+   Purpose: Global root tokens + field modes.
    ====================================================== */
 
-/* 1️⃣ Global System Variables (Layer 0) */
-:root { --background-color: #1E2328; }   /* default = cool */
-body { 
-  background-color: var(--background-color);
-  transition: background-color 0.4s ease;
+/* 1) Root tokens (defaults) */
+:root {
+  /* Text + accent */
+  --text-color: #C5A76C;           /* Soft System Gold */
+  --accent-color: #C5A76C;
+  --accent: var(--accent-color);   /* alias */
+
+  /* Background default (Cool Field) */
+  --background-color: #1E2328;
+
+  /* Type + rhythm */
+  --font-family: "Helvetica Now Condensed Light", Helvetica, Arial, sans-serif;
+  --line-height: 1.5;
+  --transition-speed: 0.4s;
 }
-body.warm     { --background-color: #724026; }
-body.balanced { --background-color: #454847; }
-body.cool     { --background-color: #1E2328; }
 
-
-/* 3️⃣ Optional Theming */
+/* 2) Apply tokens */
 body {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -23,6 +28,12 @@ body {
   transition: background-color var(--transition-speed) ease;
 }
 
+/* 3) Field modes (override only the variable) */
+body.warm     { --background-color: #724026; } /* Warm · Clay Rust */
+body.balanced { --background-color: #454847; } /* Balanced · Architectural Charcoal */
+body.cool     { --background-color: #1E2328; } /* Cool · Slate */
+
+/* 4) Optional theming */
 footer {
   color: var(--text-color);
   font-size: 0.9rem;
