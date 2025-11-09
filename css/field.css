@@ -23,3 +23,11 @@ body {
 body.warm     { --background-color: #724026; } /* Warm · Clay Rust */
 body.balanced { --background-color: #454847; } /* Balanced · Arch Charcoal */
 body.cool     { --background-color: #1E2328; } /* Cool · Slate */
+
+/* TEMP TEST */
+body::after {
+  content: "FIELDS.CSS LOADED";
+  position: fixed; top: 8px; right: 8px;
+  background: rgba(0,0,0,.6); color: #fff; padding: 6px 10px;
+  font: 12px/1.2 monospace; z-index: 9999;
+}
