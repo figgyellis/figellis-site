@@ -23,3 +23,18 @@ body {
 body.warm     { --background-color: #724026; } /* Warm · Clay Rust */
 body.balanced { --background-color: #454847; } /* Balanced · Arch Charcoal */
 body.cool     { --background-color: #1E2328; } /* Cool · Slate */
+
+footer {
+  background-color: var(--background-color);
+  color: var(--accent-color);
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0.6rem 0;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+footer:hover {
+  opacity: 1;
+}
