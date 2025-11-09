@@ -1,4 +1,4 @@
-/* Fig Ellis System — fields.css */
+no/* Fig Ellis System — fields.css */
 
 /* 1) Root tokens (defaults) */
 :root {
@@ -37,4 +37,8 @@ footer {
 
 footer:hover {
   opacity: 1;
+}
+
+footer {
+  border-top: none;
 }
