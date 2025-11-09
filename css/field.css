@@ -16,6 +16,9 @@
   --font-family: "Helvetica Now Condensed Light", sans-serif;
   --line-height: 1.5;
   --padding-base: 1.2rem;
+
+  /* Transition baseline (for smooth mode changes) */
+  --transition-speed: 0.4s;
 }
 
 /* 2️⃣ Alternate Field Modes */
@@ -32,6 +35,14 @@ body.cool {
 }
 
 /* 3️⃣ Optional Theming */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  transition: background-color var(--transition-speed) ease;
+}
+
 footer {
   color: var(--text-color);
   font-size: 0.9rem;
