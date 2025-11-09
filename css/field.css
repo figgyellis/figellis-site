@@ -1,19 +1,10 @@
-/* ======================================================
-   Fig Ellis System — fields.css
-   Purpose: Global root tokens + field modes.
-   ====================================================== */
+/* Fig Ellis System — fields.css */
 
 /* 1) Root tokens (defaults) */
 :root {
-  /* Text + accent */
-  --text-color: #C5A76C;           /* Soft System Gold */
+  --text-color: #C5A76C;                 /* Soft System Gold */
   --accent-color: #C5A76C;
-  --accent: var(--accent-color);   /* alias */
-
-  /* Background default (Cool Field) */
-  --background-color: #1E2328;
-
-  /* Type + rhythm */
+  --background-color: #1E2328;           /* default: Cool */
   --font-family: "Helvetica Now Condensed Light", Helvetica, Arial, sans-serif;
   --line-height: 1.5;
   --transition-speed: 0.4s;
@@ -28,15 +19,7 @@ body {
   transition: background-color var(--transition-speed) ease;
 }
 
-/* 3) Field modes (override only the variable) */
+/* 3) Field modes (override just the var) */
 body.warm     { --background-color: #724026; } /* Warm · Clay Rust */
-body.balanced { --background-color: #454847; } /* Balanced · Architectural Charcoal */
+body.balanced { --background-color: #454847; } /* Balanced · Arch Charcoal */
 body.cool     { --background-color: #1E2328; } /* Cool · Slate */
-
-/* 4) Optional theming */
-footer {
-  color: var(--text-color);
-  font-size: 0.9rem;
-  text-align: center;
-  margin-top: 2rem;
-}
