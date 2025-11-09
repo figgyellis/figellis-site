@@ -4,35 +4,15 @@
    ====================================================== */
 
 /* 1️⃣ Global System Variables (Layer 0) */
-:root {
-  /* Text + Accent */
-  --text-color: #C5A76C;             /* Soft System Gold */
-  --accent-color: #C5A76C;
-
-  /* Background Fields */
-  --background-color: #1E2328;       /* Default: Cool Field (Slate Edition) */
-
-  /* Font + Spacing */
-  --font-family: "Helvetica Now Condensed Light", sans-serif;
-  --line-height: 1.5;
-  --padding-base: 1.2rem;
-
-  /* Transition baseline (for smooth mode changes) */
-  --transition-speed: 0.4s;
+:root { --background-color: #1E2328; }   /* default = cool */
+body { 
+  background-color: var(--background-color);
+  transition: background-color 0.4s ease;
 }
+body.warm     { --background-color: #724026; }
+body.balanced { --background-color: #454847; }
+body.cool     { --background-color: #1E2328; }
 
-/* 2️⃣ Alternate Field Modes */
-body.warm {
-  --background-color: #724026;       /* Warm Field — Clay Rust Edition */
-}
-
-body.balanced {
-  --background-color: #454847;       /* Balanced Field — Architectural Charcoal */
-}
-
-body.cool {
-  --background-color: #1E2328;       /* Cool Field — Slate Edition */
-}
 
 /* 3️⃣ Optional Theming */
 body {
