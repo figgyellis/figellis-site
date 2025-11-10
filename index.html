@@ -45,21 +45,47 @@
   <footer>
     © 2025 Figellis, Inc. — designed in field light
   </footer>
+  
     <!-- Dynamic scroll script -->
     <script>
-      window.addEventListener("load", () => {
+      function initFeedScroll() {
         const track = document.querySelector(".feed-track");
         if (!track) return;
-  
+      
+        // Clean up any old clones to avoid stacking
+        document.querySelectorAll(".feed-track.clone").forEach(el => el.remove());
+      
+        // Clone the track for seamless loop
         const clone = track.cloneNode(true);
+        clone.classList.add("clone");
         track.parentElement.appendChild(clone);
-  
-        const totalWidth = track.scrollWidth;
-        const duration = totalWidth / 50; // tweak this for speed
-  
-        track.style.animation = `scrollFeed ${duration}s linear infinite`;
-        clone.style.animation = `scrollFeed ${duration}s linear infinite reverse`;
+      
+        // Wait for images to load for accurate width
+        const images = track.querySelectorAll("img");
+        let loaded = 0;
+        images.forEach(img => {
+          if (img.complete) loaded++;
+          else img.addEventListener("load", () => {
+            loaded++;
+            if (loaded === images.length) setLoop();
+          });
+        });
+        if (loaded === images.length) setLoop();
+      
+        function setLoop() {
+          const totalWidth = track.scrollWidth;
+          const duration = totalWidth / 50; // adjust speed here
+          track.style.animation = `scrollFeed ${duration}s linear infinite`;
+          clone.style.animation = `scrollFeed ${duration}s linear infinite reverse`;
+        }
+      }
+      
+      // Run on load + on resize/orientation change
+      window.addEventListener("load", initFeedScroll);
+      window.addEventListener("resize", () => {
+        clearTimeout(window.feedResize);
+        window.feedResize = setTimeout(initFeedScroll, 400);
       });
-    </script>
-</body>
+      </script>
+      /body>
 </html>
