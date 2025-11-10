@@ -16,3 +16,64 @@
 .slide {
   flex: 0 0 auto;
   scroll-snap-align: start;
+/* root theme mode comes from body class: cool | warm | balanced */
+
+body {
+  margin: 0;
+  font-family: Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-y: auto;
+}
+
+/* Cool mode */
+body.cool {
+  --bg: #1E2328;
+  --text: #C5A76C; /* Soft System Gold */
+}
+
+/* — Anchored Top — */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.hero-emblem {
+  height: 120px;
+  width: auto;
+  opacity: 0.86;
+}
+
+/* — Scroll area — */
+.scroll-feed {
+  margin-top: 240px; /* pushes content below emblem */
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 60px 20px 120px;
+}
+
+/* Feed items */
+.feed-item {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #F7F4EC;
+  color: #1A1A1A;
+  padding: 36px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.meta {
+  display: block;
+  margin-top: 12px;
+  font-size: .85rem;
+  opacity: .6;
+  letter-spacing: .02em;
+}
