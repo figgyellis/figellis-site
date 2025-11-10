@@ -1,13 +1,9 @@
 /* ===== Fig Ellis · fields.css ===== */
 
 /* Global tokens */
-:root{
-  --text-color: #C5A76C;   /* Soft System Gold */
-  --bg-cool:     #1E2328;  /* Slate */
-  --bg-warm:     #724026;  /* Clay Rust */
-  --bg-balanced: #454847;  /* Architectural Charcoal */
-
-  --max-card: 560px;
+:root {
+  --background-color: var(--mode-background);
+  --accent: var(--mode-accent);
 }
 
 /* Field modes */
