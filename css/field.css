@@ -1,48 +1,71 @@
-/* Fig Ellis System -- fields.css (clean) */
+/* ===== Fig Ellis · fields.css ===== */
 
-/* 1) Root tokens (defaults) */
+/* Global tokens */
 :root{
-  --text-color:#C5A76C;
-  --accent-color:#C5A76C;
-  --background-color:#1E2328; /* default: Cool */
-  --font-family:"Helvetica Now Condensed Light", Helvetica, Arial, sans-serif;
-  --line-height:1.5;
-  --transition-speed:0.4s;
+  --text-color: #C5A76C;   /* Soft System Gold */
+  --bg-cool:     #1E2328;  /* Slate */
+  --bg-warm:     #724026;  /* Clay Rust */
+  --bg-balanced: #454847;  /* Architectural Charcoal */
+
+  --max-card: 560px;
 }
 
-/* 2) Apply tokens */
-html, body { height: 100%; }
-body{
-  margin:0;
-  background-color:var(--background-color);
-  color:var(--text-color);
-  font-family:var(--font-family);
-  line-height:var(--line-height);
-  transition:background-color var(--transition-speed) ease;
+/* Field modes */
+body.cool     { --background-color: var(--bg-cool); }
+body.warm     { --background-color: var(--bg-warm); }
+body.balanced { --background-color: var(--bg-balanced); }
+
+/* Base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
 }
 
-body.warm     { --background-color: #724026; }  /* Warm Field -- Clay Rust Edition */
-body.balanced { --background-color: #454847; }  /* Balanced Field -- Arch Charcoal */
-body.cool     { --background-color: #1E2328; }  /* Cool Field -- Slate Edition */
-
-/* ======================================================
-   Footer -- inherits field tone
-   ====================================================== */
-
-footer {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  text-align: center;
-  font-size: 0.9rem;
-  padding: 0.8rem 0;
+body {
   margin: 0;
-  border-top: none;
-  transition: background-color 0.4s ease;
+  color: var(--text-color);
+  background: var(--background-color, var(--bg-cool));
+  font-family: "Helvetica Now", Helvetica, Arial, sans-serif;
+  /* prevent the half-white/half-brown scroll issue */
+  overflow-x: hidden;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  footer {
-    background-color: var(--background-color); /* still uses the field var */
-  }
+/* Center the card perfectly on all devices */
+.stage{
+  min-height: 100svh;                 /* mobile-safe viewport */
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 48px);
 }
+
+/* Image sizing & polish */
+img{
+  width: min(88vw, var(--max-card));
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  transition: transform .4s ease, filter .4s ease;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
+}
+
+img:hover{
+  transform: scale(1.02);
+  filter:
+    drop-shadow(0 0 20px rgba(0,0,0,.25))
+    drop-shadow(0 0 40px rgba(0,0,0,.15));
+}
+
+/* Footer */
+footer{
+  position: fixed;
+  left: 0; right: 0; bottom: 18px;
+  text-align: center;
+  font-size: .9rem;
+  opacity: .75;
+  user-select: none;
+  -webkit-user-select: none;
+}
+footer:hover{ opacity: 1; }
