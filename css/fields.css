@@ -61,6 +61,42 @@ body.balanced { --background-color: var(--bg-balanced); }
     border-left: 4px solid #C5A76C;
     padding-left: 1.25rem;
   }
+  /* -------------------------------------------------------
+   Fig Ellis — Feed Slider
+   ------------------------------------------------------- */
+
+.feed-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 2rem;
+  padding: 2rem;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.feed-slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.feed-slider::-webkit-scrollbar-thumb {
+  background: rgba(197,167,108,0.4);
+  border-radius: 10px;
+}
+
+.slide {
+  flex: 0 0 85%;
+  scroll-snap-align: center;
+  transition: transform 0.4s ease;
+}
+
+.slide:hover {
+  transform: scale(1.02);
+}
+
+@media (min-width: 900px) {
+  .slide { flex: 0 0 50%; }
+}
 
 /* 3️⃣ Base Layer */
 *,
