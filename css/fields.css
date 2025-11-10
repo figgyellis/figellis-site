@@ -59,12 +59,14 @@ body {
 
 /* 5️⃣ Image Presentation */
 img {
-  width: min(88vw, var(--max-card));
+  width: 100%;
+  max-width: clamp(240px, 42vw, 420px);
   height: auto;
   display: block;
   border-radius: 12px;
   transition: transform 0.6s ease, filter 0.6s ease;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  margin: 0 auto;
 }
 
 img:hover {
