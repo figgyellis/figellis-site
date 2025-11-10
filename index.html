@@ -38,5 +38,21 @@
   <footer>
     © 2025 Figellis, Inc. — designed in field light
   </footer>
+    <!-- Dynamic scroll script -->
+    <script>
+      window.addEventListener("load", () => {
+        const track = document.querySelector(".feed-track");
+        if (!track) return;
+  
+        const clone = track.cloneNode(true);
+        track.parentElement.appendChild(clone);
+  
+        const totalWidth = track.scrollWidth;
+        const duration = totalWidth / 50; // tweak this for speed
+  
+        track.style.animation = `scrollFeed ${duration}s linear infinite`;
+        clone.style.animation = `scrollFeed ${duration}s linear infinite reverse`;
+      });
+    </script>
 </body>
 </html>
