@@ -1,190 +1,34 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Figellis · Landing</title>
-=======
-<div class="feed-track">
-  <!-- Image slides -->
-  <div class="slide"><img src="/assets/fe-tile.jpeg" alt=""></div>
-  <div class="slide"><img src="/assets/banana_bread.png" alt=""></div>
->>>>>>> parent of dbce28e (Update index.html)
-
-  <!-- Inline Field System (self-contained for now) -->
-  <style>
-    /* ========= FIG ELLIS · FIELD ROOTS ========= */
-    :root {
-      --text: #C5A76C;                 /* Soft System Gold (text/accent) */
-      --bg:   #1E2328;                 /* Default Cool Field · Slate Edition */
-      --bone:#F4EFE6;                  /* Bone card background */
-      --ink: #1B1E20;                  /* Ink on bone */
-      --radius: 14px;
-      --shadow: 0 10px 24px rgba(0,0,0,.25);
-      --pad: 1.2rem;
-    }
-    body.warm     { --bg:#724026; }
-    body.balanced { --bg:#454847; }
-    body.cool     { --bg:#1E2328; }
-
-    /* ========= PAGE LAYOUT ========= */
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Helvetica Now Condensed Light", Helvetica, Arial, sans-serif;
-      line-height: 1.5;
-    }
-    .wrap {
-      min-height: 100%;
-      display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      align-items: start;
-    }
-
-    /* ========= EMBLEM ========= */
-    .hero {
-      display: grid;
-      place-items: center;
-      padding: 6vh 2rem 2rem;
-    }
-    .hero img {
-      width: min(720px, 72vw);
-      max-height: 60vh;
-      object-fit: contain;
-      border-radius: 12px;
-      display: block;
-      filter: drop-shadow(0 6px 24px rgba(0,0,0,.4));
-      transition: transform .4s ease, filter .4s ease;
-    }
-    .hero img:hover {
-      transform: scale(1.02);
-      filter:
-        drop-shadow(0 0 18px rgba(197,167,108,.35))
-        drop-shadow(0 10px 28px rgba(0,0,0,.35));
-    }
-
-    /* ========= FEED SLIDER ========= */
-    .feed {
-      padding: 1rem 2rem 3rem;
-    }
-    .feed-slider {
-      display: flex;
-      gap: 2rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 1rem .5rem 1rem;
-    }
-    .feed-slider::-webkit-scrollbar { height: 8px; }
-    .feed-slider::-webkit-scrollbar-thumb {
-      background: rgba(197,167,108,.35);
-      border-radius: 8px;
-    }
-
-    .slide {
-      flex: 0 0 88%;
-      scroll-snap-align: center;
-      transition: transform .35s ease;
-    }
-    .slide:hover { transform: translateY(-2px); }
-
-    /* ========= BONE CARD ========= */
-    .bone-card {
-      background: var(--bone);
-      color: var(--ink);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: clamp(1rem, 3vw, 1.6rem);
-      border: 1px solid rgba(0,0,0,.06);
-    }
-    .bone-card p {
-      margin: 0 0 .85rem 0;
-      font-size: clamp(1rem, 2.4vw, 1.2rem);
-      letter-spacing: .01em;
-    }
-    .bone-card small {
-      display: block;
-      opacity: .7;
-      letter-spacing: .06em;
-      font-size: .85rem;
-    }
-
-    @media (min-width: 900px) {
-      .slide { flex: 0 0 48%; }
-    }
-
-    /* ========= FOOTER ========= */
-    footer {
-      padding: 2rem;
-      text-align: center;
-      font-size: .9rem;
-      opacity: .8;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/fields.css">
 </head>
 
-<!-- Pick one: warm | balanced | cool (default below) -->
-<body class="balanced">
-  <main class="wrap">
-    <!-- Emblem -->
-    <section class="hero" aria-label="Fig Ellis Emblem">
-      <!-- Replace with your filename (kept large but constrained by CSS) -->
-      <img src="Mark fe-card.png" alt="Fig Ellis emblem" />
-    </section>
+<body class="cool">
 
-    <!-- Feed Slider -->
-    <section class="feed" aria-label="Field Feed">
-      <div class="feed-slider">
+<header class="fixed-header">
+  <img src="/assets/Mark fe-card.png" alt="Fig Ellis emblem" class="hero-emblem">
+</header>
 
-        <article class="slide bone-card">
-          <p>“The work doesn’t ask for speed — only honesty. Some things bloom slower on purpose.”</p>
-          <small>· Field Reflection · No. 1109A</small>
-        </article>
+<main class="scroll-feed">
+  <section class="feed-item">
+    <p>“The work doesn’t ask for speed — only honesty. Some things bloom slower on purpose.”</p>
+    <span class="meta">· Field Reflection · No. 1109A</span>
+  </section>
 
-        <article class="slide bone-card">
-          <p>Every delay is a dialogue with timing itself. Listening is part of building.</p>
-          <small>· Studio Log ·</small>
-        </article>
+  <section class="feed-item">
+    <p>Every delay is a dialogue with timing itself.</p>
+    <span class="meta">· Fieldnote ·</span>
+  </section>
 
-        <article class="slide bone-card">
-          <p>Progress hides in the quiet minutes you almost didn’t count.</p>
-          <small>· Frequency Note ·</small>
-        </article>
+  <section class="feed-item">
+    <p>Progress hides in the quiet minutes you almost didn’t count.</p>
+    <span class="meta">· Frequency Note ·</span>
+  </section>
+</main>
 
-        <article class="slide bone-card">
-          <p>Design is a promise to return — to coherence, to care, to the body.</p>
-          <small>· System Whisper ·</small>
-        </article>
-
-      </div>
-<<<<<<< HEAD
-    </section>
-
-    <footer>© 2025 Figellis, Inc. — designed in field light</footer>
-=======
-    </header>
-            <img src="/assets/fe-card.png" alt="Figellis emblem" />
-            
-            <section class="feed-slider">
-              <div class="slide bone-card">
-                <p>“The work doesn’t ask for speed — only honesty. Some things bloom slower on purpose.”</p>
-                <small>· Field Reflection · No. 1109A</small>
-              </div>
-            
-              <div class="slide bone-card pulse">
-                <p>Every delay is a dialogue with timing itself.</p>
-                <small>· Fieldnote ·</small>
-              </div>
-            
-              <div class="slide bone-card">
-                <p>Progress is rarely visible while it’s happening. But silence counts too.</p>
-                <small>· Studio Log ·</small>
-              </div>
-            </section>          
->>>>>>> parent of 81c3f56 (Update index.html)
-  </main>
 </body>
 </html>
