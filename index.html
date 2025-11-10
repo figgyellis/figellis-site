@@ -1,19 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Figellis · Landing</title>
-  <!-- Single source of truth -->
-  <link rel="stylesheet" href="/css/fields.css?v=20251109a">
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fig Ellis · Starter UI Kit v0.1a</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+      @font-face { font-family: 'Helvetica Now Condensed Light'; src: local('Helvetica Now Condensed Light'); }
+      body { font-family: 'Helvetica Now Condensed Light', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    </style>
+  </head>
+  <body class="bg-balanced">
+    <header class="topbar">
+      <span class="brand">FIG ELLIS</span>
+      <nav class="phases">Source · Frequency · Fieldworks · Echo</nav>
+      <div class="user"><span class="tier">A4 · MEMBER</span></div>
+    </header>
 
-<!-- Pick ONE: cool | warm | balanced -->
-<body class="cool">
-  <main class="stage">
-    <img src="/assets/fe-card.svg" alt="Fig Ellis emblem" />
-  </main>
+    <aside class="rail">
+      <a href="index.html" class="active">Library</a>
+      <a href="library.html">Member Grid</a>
+      <a href="account.html">Account</a>
+    
+    <a href="tiers.html">Tiers</a>
+    <a href="changelog.html">Changelog</a>
+  </aside>
 
-  <footer>© 2025 Figellis, Inc. — designed in field light</footer>
-</body>
+    <main class="canvas">
+      <h1>Starter UI Kit · v0.1a</h1>
+      <p class="meta">Environment Interface Blueprint · Visual Gate System states</p>
+
+      <section class="card open">
+        <h2>Open · T3</h2>
+        <p>Welcome back inside the field. Everything here is live.</p>
+        <button class="btn-outline">Primary Action</button>
+      </section>
+
+      <section class="card curtain">
+        <h2>Member-Only Study · T2</h2>
+        <div class="body">
+          <p>Abstract visible … details veiled. This layer’s visible, but its pulse is sealed.</p>
+        </div>
+        <div class="cta">
+          <button class="btn-outline">Unlock Access</button>
+        </div>
+      </section>
+
+      <section class="card frame">
+        <h2>Fieldworks Node</h2>
+        <p class="notice">Access Required: Tier A3+</p>
+        <div class="cta">
+          <button class="btn-outline">Request Access</button>
+          <button class="btn-outline">Learn Tiers</button>
+        </div>
+      </section>
+
+      <section class="card seal">
+        <h2>Sealed Core</h2>
+        <p>Operator-only.</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Fig Ellis · Environment v1.0 · Integrity: Restoration-Complete v1.1</small>
+    </footer>
+  </body>
 </html>
