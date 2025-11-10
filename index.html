@@ -1,65 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Figellis · Landing</title>
 
-  <!-- Field tokens (Warm / Balanced / Cool) -->
-  <link rel="stylesheet" href="css/fields.css?v=3" />
-
-  <!-- Minimal page styles -->
-  <style>
-    html, body {
-      height: 100%;
-      min-height: 100svh; /* mobile-safe viewport */
-      margin: 0;
-    }
-    body {
-      background-color: var(--background-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: "Helvetica Now", Helvetica, Arial, sans-serif;
-      color: var(--accent);
-    }
-    img {
-      max-width: 60vw;
-      max-height: 70vh;
-      object-fit: contain;
-      display: block;
-      border-radius: 12px;
-      transition: transform .6s ease, filter .6s ease;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,.4));
-    }
-    img:hover {
-      filter:
-        drop-shadow(0 0 20px var(--accent))
-        drop-shadow(0 0 40px rgba(197,167,108,.25));
-      transform: scale(1.02);
-    }
-    footer {
-      position: absolute;
-      bottom: 20px;
-      text-align: center;
-      font-size: .85rem;
-      letter-spacing: .05em;
-      color: var(--accent);
-      opacity: .7;
-      -webkit-user-select: none; user-select: none;
-      transition: opacity .4s ease;
-    }
-    footer:hover { opacity: 1; }
-  </style>
-
-  <!-- Optional: tint mobile browser UI to match -->
-  <meta name="theme-color" content="#1E2328" />
+  <!-- Single source of truth -->
+  <link rel="stylesheet" href="/css/fields.css?v=20251109a">
 </head>
 
-<!-- Switch the field: warm | balanced | cool -->
-<body class="warm">
-  <img src="B35C5A8F-D28C-4613-A41F-4BFDA4DB032D.png" alt="Fig Ellis emblem" />
+<!-- Pick ONE: cool | warm | balanced -->
+<body class="cool">
+  <main class="stage">
+    <img src="/assets/fe-card.png" alt="Fig Ellis emblem" />
+  </main>
+
   <footer>© 2025 Figellis, Inc. — designed in field light</footer>
 </body>
 </html>
