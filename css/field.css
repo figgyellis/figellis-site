@@ -1,0 +1,48 @@
+/* Fig Ellis System -- fields.css (clean) */
+
+/* 1) Root tokens (defaults) */
+:root{
+  --text-color:#C5A76C;
+  --accent-color:#C5A76C;
+  --background-color:#1E2328; /* default: Cool */
+  --font-family:"Helvetica Now Condensed Light", Helvetica, Arial, sans-serif;
+  --line-height:1.5;
+  --transition-speed:0.4s;
+}
+
+/* 2) Apply tokens */
+html, body { height: 100%; }
+body{
+  margin:0;
+  background-color:var(--background-color);
+  color:var(--text-color);
+  font-family:var(--font-family);
+  line-height:var(--line-height);
+  transition:background-color var(--transition-speed) ease;
+}
+
+body.warm     { --background-color: #724026; }  /* Warm Field -- Clay Rust Edition */
+body.balanced { --background-color: #454847; }  /* Balanced Field -- Arch Charcoal */
+body.cool     { --background-color: #1E2328; }  /* Cool Field -- Slate Edition */
+
+/* ======================================================
+   Footer -- inherits field tone
+   ====================================================== */
+
+footer {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 0.8rem 0;
+  margin: 0;
+  border-top: none;
+  transition: background-color 0.4s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  footer {
+    background-color: var(--background-color); /* still uses the field var */
+  }
+}
