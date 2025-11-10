@@ -69,7 +69,7 @@ body {
 }
 
 .feed-track img {
-  height: 160px;
+  height: 130px;
   object-fit: cover;
   margin-right: 20px;
   filter: brightness(0.85);
