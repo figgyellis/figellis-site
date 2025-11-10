@@ -1,229 +1,69 @@
-/* ======================================================
-   Fig Ellis System — Fields.css
-   Purpose: Global color fields, variables, and layout base.
-   ====================================================== */
-
-/* 1️⃣ Global Root Variables (Layer 0) */
-:root {
-  --text-color: #C5A76C;          /* Soft System Gold */
-  --accent: #C5A76C;
-
-  --bg-cool: #1E2328;             /* Cool Field — Slate Edition */
-  --bg-warm: #724026;             /* Warm Field — Clay Rust Edition */
-  --bg-balanced: #454847;         /* Balanced Field — Architectural Charcoal */
-
-  --font-family: "Helvetica Now Condensed Light", Helvetica, Arial, sans-serif;
-  --line-height: 1.5;
-  --max-card: 560px;
-  --transition-speed: 0.4s;
-}
-
-/* 2️⃣ Field Modes */
-body.cool     { --background-color: var(--bg-cool); }
-body.warm     { --background-color: var(--bg-warm); }
-body.balanced { --background-color: var(--bg-balanced); }
-
-/* -------------------------------------------------------
-   Fig Ellis — Bone Card (Feed Snippet)
-   ------------------------------------------------------- */
-
-   .bone-card {
-    background-color: #EAE7E1;      /* bone / matte parchment tone */
-    color: #1B1E20;                 /* deep charcoal text for contrast */
-    border-radius: 16px;
-    padding: 1.5rem;
-    max-width: 680px;
-    margin: 2rem auto;
-    box-shadow:
-      0 4px 12px rgba(0,0,0,0.15),
-      inset 0 0 0.5px rgba(0,0,0,0.1);
-    line-height: 1.6;
-    font-size: 1.05rem;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-  
-  .bone-card:hover {
-    transform: translateY(-4px);
-    box-shadow:
-      0 8px 18px rgba(0,0,0,0.18),
-      inset 0 0 1px rgba(0,0,0,0.1);
-  }
-  
-  .bone-card small {
-    display: block;
-    margin-top: 0.75rem;
-    font-size: 0.85rem;
-    color: rgba(27,30,32,0.6);
-    letter-spacing: 0.04em;
-  }
-  
-  .bone-card.pulse {
-    border-left: 4px solid #C5A76C;
-    padding-left: 1.25rem;
-  }
-  /* -------------------------------------------------------
-   Fig Ellis — Feed Slider
-   ------------------------------------------------------- */
-
-/* -------------------------------------------------------
-   Fig Ellis — Feed Slider
-   ------------------------------------------------------- */
-
-   .feed-slider {
+/* —————————————————————
+   Feed Track — horizontal scroll reel
+   ————————————————————— */
+   .feed-track {
     display: flex;
+    gap: 1.2rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 2rem;
-    padding: 2rem;
-    scroll-behavior: smooth;
+    padding: 2rem 1.2rem;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
   
-  .feed-slider::-webkit-scrollbar {
-    height: 8px;
+  .feed-track::-webkit-scrollbar {
+    display: none;
   }
   
-  .feed-slider::-webkit-scrollbar-thumb {
-    background: rgba(197,167,108,0.4);
-    border-radius: 10px;
-  }
-  
+  /* Standard slide container */
   .slide {
-    flex: 0 0 85%;
-    scroll-snap-align: center;
-    transition: transform 0.4s ease;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
   
-  .slide:hover {
-    transform: scale(1.02);
+  /* Images inside feed */
+  .slide img {
+    width: 160px;
+    border-radius: 12px;
+    display: block;
   }
   
   @media (min-width: 900px) {
-    .slide { flex: 0 0 50%; }
+  /* —————————————————————
+     White Field-Cards
+     ————————————————————— */
+  .card {
+    background: #F7F4ED; /* soft bone */
+    color: #1C1C1C;
+    padding: 1.3rem 1.4rem;
+    border-radius: 14px;
+    width: 260px;
+    border: 1px solid rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: inherit;
+    line-height: 1.45;
   }
-
-/* 3️⃣ Base Layer */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-  min-height: 100svh;
-}
-
-body {
-  margin: 0;
-  background-color: var(--background-color, var(--bg-cool));
-  color: var(--text-color);
-  font-family: var(--font-family);
-  line-height: var(--line-height);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
-  transition: background-color var(--transition-speed) ease;
-}
-
-/* === LIVING FEED HEADER === */
-.living-feed {
-  position: fixed;              /* anchors to top of viewport */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;                /* adjust as needed */
-  overflow: hidden;
-  background-color: #1B1E20;    /* Charcoal (Layer 0 Cool Field) */
-  z-index: 100;
-}
-
-/* Feed container that endlessly scrolls left */
-.feed-track {
-  display: flex;
-  width: max-content;           /* fits content width */
-  animation: scrollFeed 80s linear infinite;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.feed-track img:hover {
-  filter: brightness(1);
-}
-
-/* Seamless infinite scroll */
-@keyframes scrollFeed {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* Adjust height on smaller screens */
-@media (max-width: 900px) {
-  .living-feed,
-  .feed-track img {
-    height: 120px;
+  
+  /* Main quote text */
+  .card p {
+    font-size: 0.92rem;
+    margin: 0 0 0.9rem;
   }
-}
-
-@media (max-width: 600px) {
-  .living-feed,
-  .feed-track img {
-    height: 90px;
+  
+  /* Small field metadata */
+  .card .meta {
+    font-size: 0.74rem;
+    opacity: 0.52;
+    letter-spacing: 0.3px;
   }
-}
-
-
-/* 4️⃣ Stage Centering */
-.stage {
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: clamp(16px, 4vw, 48px);
-}
-
-/* 5️⃣ Image Presentation */
-img {
-  width: 100%;
-  max-width: clamp(120px, 18vw, 240px);
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  transition: transform 0.6s ease, filter 0.6s ease;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
-  margin: 0 auto;
-}
-
-img:hover {
-  transform: scale(1.02);
-  filter:
-    drop-shadow(0 0 20px rgba(0, 0, 0, 0.25))
-    drop-shadow(0 0 40px rgba(0, 0, 0, 0.15));
-}
-
-/* 6️⃣ Footer */
-footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 18px;
-  text-align: center;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  opacity: 0.75;
-  user-select: none;
-  -webkit-user-select: none;
-  transition: opacity var(--transition-speed) ease;
-}
-
-footer:hover {
-  opacity: 1;
-}
-
-/* 7️⃣ Accessibility / Contrast Helpers */
-@media (prefers-color-scheme: light) {
-  body.cool, body.balanced, body.warm {
-    filter: brightness(0.95);
+  
+  /* —————————————————————
+     Optional subtle hover lift
+     ————————————————————— */
+  .slide:hover, .card:hover {
+    transform: translateY(-2px);
+    transition: 120ms ease;
   }
-}
+  
