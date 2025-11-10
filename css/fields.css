@@ -55,6 +55,11 @@ body.balanced { --background-color: var(--bg-balanced); }
     color: rgba(27,30,32,0.6);
     letter-spacing: 0.04em;
   }
+  
+  .bone-card.pulse {
+    border-left: 4px solid #C5A76C;
+    padding-left: 1.25rem;
+  }
 
 /* 3️⃣ Base Layer */
 *,
