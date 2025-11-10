@@ -87,7 +87,7 @@ body {
 /* 5️⃣ Image Presentation */
 img {
   width: 100%;
-  max-width: clamp(200px, 35vw, 420px);
+  max-width: clamp(120px, 18vw, 240px);
   height: auto;
   display: block;
   border-radius: 12px;
