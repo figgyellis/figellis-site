@@ -29,6 +29,16 @@ body {
   overflow-x: hidden;
 }
 
+.living-mark {
+  width: clamp(160px, 22vw, 320px);
+  display: block;
+  margin: 0 auto;
+  transition: filter .6s ease, opacity .6s ease;
+}
+.living-mark:hover {
+  filter: drop-shadow(0 0 12px rgba(197,167,108,0.35));
+}
+
 /* Center the card perfectly on all devices */
 .stage{
   min-height: 100svh;                 /* mobile-safe viewport */
