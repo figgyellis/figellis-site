@@ -1,9 +1,22 @@
 /* ===== Fig Ellis · fields.css ===== */
 
 /* Global tokens */
+/* ===== Fig Ellis System Tokens — Layer 0 ===== */
 :root {
-  --background-color: var(--mode-background);
-  --accent: var(--mode-accent);
+  /* Field tones */
+  --bg-cool: #1E2328;
+  --bg-warm: #724026;
+  --bg-balanced: #454847;
+
+  /* Text token */
+  --text-color: #C5A76C;
+
+  /* Mode routing */
+  --mode-background: var(--bg-cool);
+  --mode-accent: var(--text-color);
+
+  /* Card max size */
+  --max-card: 640px;
 }
 
 /* Field modes */
