@@ -22,6 +22,7 @@
 body.cool     { --background-color: var(--bg-cool); }
 body.warm     { --background-color: var(--bg-warm); }
 body.balanced { --background-color: var(--bg-balanced); }
+
 /* -------------------------------------------------------
    Fig Ellis — Bone Card (Feed Snippet)
    ------------------------------------------------------- */
