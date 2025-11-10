@@ -22,6 +22,39 @@
 body.cool     { --background-color: var(--bg-cool); }
 body.warm     { --background-color: var(--bg-warm); }
 body.balanced { --background-color: var(--bg-balanced); }
+/* -------------------------------------------------------
+   Fig Ellis — Bone Card (Feed Snippet)
+   ------------------------------------------------------- */
+
+   .bone-card {
+    background-color: #EAE7E1;      /* bone / matte parchment tone */
+    color: #1B1E20;                 /* deep charcoal text for contrast */
+    border-radius: 16px;
+    padding: 1.5rem;
+    max-width: 680px;
+    margin: 2rem auto;
+    box-shadow:
+      0 4px 12px rgba(0,0,0,0.15),
+      inset 0 0 0.5px rgba(0,0,0,0.1);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .bone-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 8px 18px rgba(0,0,0,0.18),
+      inset 0 0 1px rgba(0,0,0,0.1);
+  }
+  
+  .bone-card small {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(27,30,32,0.6);
+    letter-spacing: 0.04em;
+  }
 
 /* 3️⃣ Base Layer */
 *,
