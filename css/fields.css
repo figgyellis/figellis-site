@@ -1,90 +1,101 @@
-/* ===== Fig Ellis · fields.css ===== */
+/* ======================================================
+   Fig Ellis System — Fields.css
+   Purpose: Global color fields, variables, and layout base.
+   ====================================================== */
 
-/* Global tokens */
-/* ===== Fig Ellis System Tokens — Layer 0 ===== */
+/* 1️⃣ Global Root Variables (Layer 0) */
 :root {
-  /* Field tones */
-  --bg-cool: #1E2328;
-  --bg-warm: #724026;
-  --bg-balanced: #454847;
+  --text-color: #C5A76C;          /* Soft System Gold */
+  --accent: #C5A76C;
 
-  /* Text token */
-  --text-color: #C5A76C;
+  --bg-cool: #1E2328;             /* Cool Field — Slate Edition */
+  --bg-warm: #724026;             /* Warm Field — Clay Rust Edition */
+  --bg-balanced: #454847;         /* Balanced Field — Architectural Charcoal */
 
-  /* Mode routing */
-  --mode-background: var(--bg-cool);
-  --mode-accent: var(--text-color);
-
-  /* Card max size */
-  --max-card: 640px;
+  --font-family: "Helvetica Now Condensed Light", Helvetica, Arial, sans-serif;
+  --line-height: 1.5;
+  --max-card: 560px;
+  --transition-speed: 0.4s;
 }
 
-/* Field modes */
+/* 2️⃣ Field Modes */
 body.cool     { --background-color: var(--bg-cool); }
 body.warm     { --background-color: var(--bg-warm); }
 body.balanced { --background-color: var(--bg-balanced); }
 
-/* Base */
+/* 3️⃣ Base Layer */
 *,
 *::before,
-*::after { box-sizing: border-box; }
+*::after {
+  box-sizing: border-box;
+}
 
 html, body {
   height: 100%;
+  min-height: 100svh;
 }
 
 body {
   margin: 0;
+  background-color: var(--background-color, var(--bg-cool));
   color: var(--text-color);
-  background: var(--background-color, var(--bg-cool));
-  font-family: "Helvetica Now", Helvetica, Arial, sans-serif;
-  /* prevent the half-white/half-brown scroll issue */
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow-x: hidden;
+  transition: background-color var(--transition-speed) ease;
 }
 
-.living-mark {
-  width: clamp(160px, 22vw, 320px);
-  display: block;
-  margin: 0 auto;
-  transition: filter .6s ease, opacity .6s ease;
-}
-.living-mark:hover {
-  filter: drop-shadow(0 0 12px rgba(197,167,108,0.35));
-}
-
-/* Center the card perfectly on all devices */
-.stage{
-  min-height: 100svh;                 /* mobile-safe viewport */
+/* 4️⃣ Stage Centering */
+.stage {
+  min-height: 100svh;
   display: grid;
   place-items: center;
   padding: clamp(16px, 4vw, 48px);
 }
 
-/* Image sizing & polish */
-img{
+/* 5️⃣ Image Presentation */
+img {
   width: min(88vw, var(--max-card));
   height: auto;
   display: block;
   border-radius: 12px;
-  transition: transform .4s ease, filter .4s ease;
-  filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
 
-img:hover{
+img:hover {
   transform: scale(1.02);
   filter:
-    drop-shadow(0 0 20px rgba(0,0,0,.25))
-    drop-shadow(0 0 40px rgba(0,0,0,.15));
+    drop-shadow(0 0 20px rgba(0, 0, 0, 0.25))
+    drop-shadow(0 0 40px rgba(0, 0, 0, 0.15));
 }
 
-/* Footer */
-footer{
+/* 6️⃣ Footer */
+footer {
   position: fixed;
-  left: 0; right: 0; bottom: 18px;
+  left: 0;
+  right: 0;
+  bottom: 18px;
   text-align: center;
-  font-size: .9rem;
-  opacity: .75;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
   user-select: none;
   -webkit-user-select: none;
+  transition: opacity var(--transition-speed) ease;
 }
-footer:hover{ opacity: 1; }
+
+footer:hover {
+  opacity: 1;
+}
+
+/* 7️⃣ Accessibility / Contrast Helpers */
+@media (prefers-color-scheme: light) {
+  body.cool, body.balanced, body.warm {
+    filter: brightness(0.95);
+  }
+}
