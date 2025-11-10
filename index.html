@@ -5,157 +5,204 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Figellis · Landing</title>
 
-  <!-- Inline Field System (self-contained for now) -->
   <style>
-    /* ========= FIG ELLIS · FIELD ROOTS ========= */
-    :root {
-      --text: #C5A76C;                 /* Soft System Gold (text/accent) */
-      --bg:   #1E2328;                 /* Default Cool Field · Slate Edition */
-      --bone:#F4EFE6;                  /* Bone card background */
-      --ink: #1B1E20;                  /* Ink on bone */
-      --radius: 14px;
-      --shadow: 0 10px 24px rgba(0,0,0,.25);
-      --pad: 1.2rem;
+    /* ===== Fig Ellis Field Vars (robust defaults) ===== */
+    :root{
+      --text: #C5A76C;                   /* Soft System Gold (text) */
+      --bg:   #1E2328;                   /* Default = Cool Field (Slate) */
+      --card-bone: #F2EDE6;              /* Bone background for notes */
+      --card-text: #1B1E20;              /* Deep charcoal for notes */
+      --shadow: rgba(0,0,0,0.35);
     }
     body.warm     { --bg:#724026; }
     body.balanced { --bg:#454847; }
     body.cool     { --bg:#1E2328; }
+    body.white    { --bg:#FFFFFF; --text:#1B1E20; }
 
-    /* ========= PAGE LAYOUT ========= */
-    html, body {
-      height: 100%;
-      margin: 0;
+    /* ===== Base ===== */
+    html,body{
+      height:100%;
+      margin:0;
+    }
+    body{
       background: var(--bg);
       color: var(--text);
-      font-family: "Helvetica Now Condensed Light", Helvetica, Arial, sans-serif;
-      line-height: 1.5;
-    }
-    .wrap {
-      min-height: 100%;
-      display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      align-items: start;
+      font-family: "Helvetica Now", Helvetica, Arial, sans-serif;
+      display:flex; align-items:center; justify-content:center;
+      overflow-x:hidden;
+      transition: background .3s ease;
     }
 
-    /* ========= EMBLEM ========= */
-    .hero {
-      display: grid;
-      place-items: center;
-      padding: 6vh 2rem 2rem;
+    /* ===== Slider ===== */
+    .slider{
+      width:min(1100px, 92vw);
+      aspect-ratio: 16 / 9;
+      position:relative;
+      overflow:hidden;
+      border-radius:16px;
+      box-shadow: 0 12px 40px var(--shadow);
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(2px);
     }
-    .hero img {
-      width: min(720px, 72vw);
-      max-height: 60vh;
+    .slides{
+      display:flex;
+      width:100%;
+      height:100%;
+      transform: translateX(var(--x,0%));
+      transition: transform .5s ease;
+    }
+    .slide{
+      min-width:100%;
+      height:100%;
+      display:flex; align-items:center; justify-content:center;
+      padding: clamp(16px, 3vw, 32px);
+    }
+
+    /* Hero image slide */
+    .slide--hero img{
+      max-width: min(70vw, 960px);
+      max-height: 80%;
       object-fit: contain;
+      display:block;
       border-radius: 12px;
-      display: block;
-      filter: drop-shadow(0 6px 24px rgba(0,0,0,.4));
-      transition: transform .4s ease, filter .4s ease;
+      box-shadow: 0 6px 28px var(--shadow);
+      transition: transform .5s ease, box-shadow .5s ease;
     }
-    .hero img:hover {
+    .slide--hero img:hover{
       transform: scale(1.02);
-      filter:
-        drop-shadow(0 0 18px rgba(197,167,108,.35))
-        drop-shadow(0 10px 28px rgba(0,0,0,.35));
+      box-shadow: 0 10px 44px var(--shadow);
     }
 
-    /* ========= FEED SLIDER ========= */
-    .feed {
-      padding: 1rem 2rem 3rem;
-    }
-    .feed-slider {
-      display: flex;
-      gap: 2rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 1rem .5rem 1rem;
-    }
-    .feed-slider::-webkit-scrollbar { height: 8px; }
-    .feed-slider::-webkit-scrollbar-thumb {
-      background: rgba(197,167,108,.35);
-      border-radius: 8px;
-    }
-
-    .slide {
-      flex: 0 0 88%;
-      scroll-snap-align: center;
-      transition: transform .35s ease;
-    }
-    .slide:hover { transform: translateY(-2px); }
-
-    /* ========= BONE CARD ========= */
-    .bone-card {
-      background: var(--bone);
-      color: var(--ink);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: clamp(1rem, 3vw, 1.6rem);
+    /* Bone card slide */
+    .note-card{
+      width:min(880px, 88%);
+      background: var(--card-bone);
+      color: var(--card-text);
+      border-radius: 14px;
+      padding: clamp(18px, 3.2vw, 28px);
+      line-height: 1.55;
+      box-shadow: 0 8px 28px rgba(0,0,0,.25);
       border: 1px solid rgba(0,0,0,.06);
     }
-    .bone-card p {
-      margin: 0 0 .85rem 0;
-      font-size: clamp(1rem, 2.4vw, 1.2rem);
-      letter-spacing: .01em;
+    .note-card h3{
+      margin:0 0 .5rem 0;
+      font-weight: 600;
+      letter-spacing: .02em;
     }
-    .bone-card small {
-      display: block;
-      opacity: .7;
-      letter-spacing: .06em;
-      font-size: .85rem;
+    .note-card p{
+      margin:.35rem 0;
     }
-
-    @media (min-width: 900px) {
-      .slide { flex: 0 0 48%; }
+    .note-meta{
+      margin-top: .75rem;
+      font-size:.9rem;
+      opacity:.7;
     }
 
-    /* ========= FOOTER ========= */
-    footer {
-      padding: 2rem;
-      text-align: center;
-      font-size: .9rem;
-      opacity: .8;
+    /* Controls */
+    .ctrl{
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:44px; height:44px; border-radius:999px;
+      background: rgba(0,0,0,.35);
+      color:#fff; border:none; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      backdrop-filter: blur(2px);
+      transition: opacity .2s ease, background .2s ease;
+    }
+    .ctrl:hover{ background: rgba(0,0,0,.5); }
+    .prev{ left:12px; }
+    .next{ right:12px; }
+
+    /* Dots */
+    .dots{
+      position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+      display:flex; gap:8px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: rgba(255,255,255,.4);
+      transition: transform .2s ease, background .2s ease;
+    }
+    .dot.active{
+      background:#fff;
+      transform: scale(1.25);
+    }
+
+    /* Footer */
+    footer{
+      position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
+      font-size:.85rem; letter-spacing:.04em; opacity:.75;
+      user-select:none;
     }
   </style>
 </head>
 
-<!-- Pick one: warm | balanced | cool (default below) -->
+<!-- Change field mode here: warm | balanced | cool | white -->
 <body class="balanced">
-  <main class="wrap">
-    <!-- Emblem -->
-    <section class="hero" aria-label="Fig Ellis Emblem">
-      <!-- Replace with your filename (kept large but constrained by CSS) -->
-      <img src="Mark fe-card.png" alt="Fig Ellis emblem" />
-    </section>
+  <div class="slider" id="slider">
+    <div class="slides" id="slides" style="--x:0%">
+      <!-- Slide 1: Hero image -->
+      <section class="slide slide--hero">
+        <img src="fe-card.png" alt="Fig Ellis Card">
+      </section>
 
-    <!-- Feed Slider -->
-    <section class="feed" aria-label="Field Feed">
-      <div class="feed-slider">
-
-        <article class="slide bone-card">
-          <p>“The work doesn’t ask for speed — only honesty. Some things bloom slower on purpose.”</p>
-          <small>· Field Reflection · No. 1109A</small>
+      <!-- Slide 2: Bone note card -->
+      <section class="slide">
+        <article class="note-card">
+          <h3>FIELD LOG — Reflection</h3>
+          <p>Today’s energy felt like a pivot. Less noise, more signal. I kept the frame simple and let the system breathe.</p>
+          <p>Design note: bone card on charcoal reads as calm authority. Keep it. Use this for short excerpts, micro-prompts, or daily anchors.</p>
+          <div class="note-meta">No. 2025-1109 · Balanced Field</div>
         </article>
+      </section>
 
-        <article class="slide bone-card">
-          <p>Every delay is a dialogue with timing itself. Listening is part of building.</p>
-          <small>· Studio Log ·</small>
+      <!-- Slide 3: Another bone card (example) -->
+      <section class="slide">
+        <article class="note-card">
+          <h3>Prompt Seed — “Pulse + Stillness”</h3>
+          <p>Write a 60-word micro-caption about choosing one small action that returns you to the present. No advice, only resonance.</p>
+          <div class="note-meta">Draft · For Channel Field</div>
         </article>
+      </section>
+    </div>
 
-        <article class="slide bone-card">
-          <p>Progress hides in the quiet minutes you almost didn’t count.</p>
-          <small>· Frequency Note ·</small>
-        </article>
+    <!-- Controls -->
+    <button class="ctrl prev" aria-label="Previous slide" id="prev">‹</button>
+    <button class="ctrl next" aria-label="Next slide" id="next">›</button>
 
-        <article class="slide bone-card">
-          <p>Design is a promise to return — to coherence, to care, to the body.</p>
-          <small>· System Whisper ·</small>
-        </article>
+    <!-- Dots -->
+    <div class="dots" id="dots" aria-hidden="true"></div>
+  </div>
 
-      </div>
-    </section>
+  <footer>© 2025 Figellis, Inc. — designed in field light</footer>
 
-    <footer>© 2025 Figellis, Inc. — designed in field light</footer>
-  </main>
+  <script>
+    // Tiny slider
+    const slides   = document.getElementById('slides');
+    const prevBtn  = document.getElementById('prev');
+    const nextBtn  = document.getElementById('next');
+    const dotsWrap = document.getElementById('dots');
+    const total    = slides.children.length;
+    let i = 0;
+
+    // Build dots
+    for(let d=0; d<total; d++){
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (d===0 ? ' active' : '');
+      dot.addEventListener('click', ()=>go(d));
+      dotsWrap.appendChild(dot);
+    }
+    const dots = [...dotsWrap.children];
+
+    function go(n){
+      i = (n + total) % total;
+      slides.style.setProperty('--x', `${-100 * i}%`);
+      dots.forEach((el,idx)=>el.classList.toggle('active', idx===i));
+    }
+    prevBtn.addEventListener('click', ()=>go(i-1));
+    nextBtn.addEventListener('click', ()=>go(i+1));
+
+    // Optional auto-advance (comment out if you don’t want it)
+    // setInterval(()=>go(i+1), 8000);
+  </script>
 </body>
 </html>
