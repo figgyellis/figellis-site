@@ -141,14 +141,8 @@ body {
   display: flex;
   width: max-content;           /* fits content width */
   animation: scrollFeed 80s linear infinite;
-}
-
-.feed-track img {
-  height: 120px;
-  object-fit: cover;
-  margin-right: 20px;
-  filter: brightness(0.85);
-  transition: filter 0.5s ease;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .feed-track img:hover {
