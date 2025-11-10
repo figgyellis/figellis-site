@@ -49,22 +49,33 @@ body {
   transition: background-color var(--transition-speed) ease;
 }
 
+/* === LIVING FEED — HEADER STRIP === */
 .living-feed {
+  position: relative;
+  width: 100%;
+  height: 220px; /* controls band height */
   overflow: hidden;
   background-color: #1B1E20; /* charcoal */
-  position: relative;
+  display: flex;
+  align-items: flex-start;   /* anchor content to the top */
+  justify-content: flex-start;
+  z-index: 10;
 }
 
 .feed-track {
+  position: absolute;
+  top: 0; left: 0;
   display: flex;
   animation: scrollFeed 120s linear infinite;
 }
 
 .feed-track img {
-  height: 175px;
+  height: 220px;
   margin-right: 20px;
   filter: brightness(0.85);
   transition: filter 0.6s ease;
+  object-fit: cover;
+  vertical-align: top;
 }
 
 .feed-track img:hover {
@@ -73,8 +84,20 @@ body {
 
 @keyframes scrollFeed {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
 }
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 900px) {
+  .living-feed { height: 160px; }
+  .feed-track img { height: 160px; }
+}
+
+@media (max-width: 600px) {
+  .living-feed { height: 120px; }
+  .feed-track img { height: 120px; }
+}
+
 
 /* 4️⃣ Stage Centering */
 .stage {
