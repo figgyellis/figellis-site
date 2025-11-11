@@ -1,0 +1,32 @@
+[
+  {
+    "src": "artifact-01.png",
+    "alt": "Artifact 01",
+    "desc": "Artifact 01 \u2014 placeholder tile."
+  },
+  {
+    "src": "artifact-02.png",
+    "alt": "Artifact 02",
+    "desc": "Artifact 02 \u2014 placeholder tile."
+  },
+  {
+    "src": "artifact-03.png",
+    "alt": "Artifact 03",
+    "desc": "Artifact 03 \u2014 placeholder tile."
+  },
+  {
+    "src": "artifact-04.png",
+    "alt": "Artifact 04",
+    "desc": "Artifact 04 \u2014 placeholder tile."
+  },
+  {
+    "src": "artifact-05.png",
+    "alt": "Artifact 05",
+    "desc": "Artifact 05 \u2014 placeholder tile."
+  },
+  {
+    "src": "artifact-06.png",
+    "alt": "Artifact 06",
+    "desc": "Artifact 06 \u2014 placeholder tile."
+  }
+]

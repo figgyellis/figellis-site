@@ -1,0 +1,14 @@
+[Bundle]
+top-scroll-feed.html | component
+assets/top-scroll-feed/manifest.json | data
+assets/top-scroll-feed/artifact-01.png | image
+assets/top-scroll-feed/artifact-02.png | image
+assets/top-scroll-feed/artifact-03.png | image
+assets/top-scroll-feed/artifact-04.png | image
+assets/top-scroll-feed/artifact-05.png | image
+assets/top-scroll-feed/artifact-06.png | image
+assets/css/modes.css | css | optional
+
+[Hex Locks]
+bg:#1E2328
+text:#C5A76C
