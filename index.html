@@ -1,208 +1,131 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Figellis · Landing</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Fig Ellis — Designed in Field Light</title>
+<meta name="description" content="Fig Ellis — architectural simplicity meets living system." />
+<link rel="stylesheet" href="/assets/css/modes.css">
+<style>
+  :root{ --bg:#1E2328; --text:#C5A76C; --feed-height:120px; --speed-pps:30; --gap:14px; }
+  *{ box-sizing:border-box; } html,body{ height:100%; }
+  body{ margin:0; background:#1E2328; color:#C5A76C;
+        font-family:"Helvetica Now Condensed Light","Helvetica Neue",Helvetica,Arial,system-ui,-apple-system,"Segoe UI",sans-serif;
+        -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  a{ color:#C5A76C; text-decoration:none; border-bottom:1px solid rgba(197,167,108,.35); }
+  a:hover{ border-bottom-color:rgba(197,167,108,.6); }
 
-  <style>
-    /* ===== Fig Ellis Field Vars (robust defaults) ===== */
-    :root{
-      --text: #C5A76C;                   /* Soft System Gold (text) */
-      --bg:   #1E2328;                   /* Default = Cool Field (Slate) */
-      --card-bone: #F2EDE6;              /* Bone background for notes */
-      --card-text: #1B1E20;              /* Deep charcoal for notes */
-      --shadow: rgba(0,0,0,0.35);
-    }
-    body.warm     { --bg:#724026; }
-    body.balanced { --bg:#454847; }
-    body.cool     { --bg:#1E2328; }
-    body.white    { --bg:#FFFFFF; --text:#1B1E20; }
+  .artifact-feed{ position:sticky; top:0; z-index:10; width:100%; height:var(--feed-height);
+                  background:#1E2328; overflow:hidden; border:0; margin:0; padding:0; }
+  .artifact-track{ display:flex; align-items:center; height:100%; gap:var(--gap); }
+  .artifact{ flex:0 0 auto; height:calc(var(--feed-height) - 2px); aspect-ratio:16/9; position:relative; overflow:hidden; border:0; }
+  .artifact img{ width:100%; height:100%; display:block; object-fit:cover; object-position:center; border:0; filter:saturate(100%); }
 
-    /* ===== Base ===== */
-    html,body{
-      height:100%;
-      margin:0;
-    }
-    body{
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Helvetica Now", Helvetica, Arial, sans-serif;
-      display:flex; align-items:center; justify-content:center;
-      overflow-x:hidden;
-      transition: background .3s ease;
-    }
+  .tooltip{ position:fixed; pointer-events:none; background:rgba(30,35,40,.92); color:#C5A76C;
+            padding:8px 10px; font-size:12px; line-height:1.35; border:1px solid rgba(197,167,108,.25);
+            border-radius:8px; max-width:44ch; transform:translate(-50%, calc(-100% - 12px));
+            opacity:0; transition:opacity .12s linear; z-index:9999; }
 
-    /* ===== Slider ===== */
-    .slider{
-      width:min(1100px, 92vw);
-      aspect-ratio: 16 / 9;
-      position:relative;
-      overflow:hidden;
-      border-radius:16px;
-      box-shadow: 0 12px 40px var(--shadow);
-      background: rgba(255,255,255,0.02);
-      backdrop-filter: blur(2px);
-    }
-    .slides{
-      display:flex;
-      width:100%;
-      height:100%;
-      transform: translateX(var(--x,0%));
-      transition: transform .5s ease;
-    }
-    .slide{
-      min-width:100%;
-      height:100%;
-      display:flex; align-items:center; justify-content:center;
-      padding: clamp(16px, 3vw, 32px);
-    }
+  .wrap{ display:grid; place-items:center; padding:48px 20px; }
+  .card{ width:clamp(280px,88vw,860px); border-radius:20px; padding:28px 28px 24px;
+         background:rgba(0,0,0,.08); outline:1px solid rgba(197,167,108,.20); backdrop-filter:blur(2px); margin-top:28px; }
+  .brand{ display:flex; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+  .brand img{ width:clamp(120px,22vw,240px); height:auto; display:block; border-radius:16px; outline:1px solid rgba(197,167,108,.20); }
+  h1{ margin:0 0 8px; font-weight:300; letter-spacing:.02em; font-size:clamp(28px,4vw,44px); line-height:1.1; }
+  p{ margin:0 0 14px; font-size:clamp(14px,1.8vw,18px); line-height:1.5; opacity:.95; }
 
-    /* Hero image slide */
-    .slide--hero img{
-      max-width: min(70vw, 960px);
-      max-height: 80%;
-      object-fit: contain;
-      display:block;
-      border-radius: 12px;
-      box-shadow: 0 6px 28px var(--shadow);
-      transition: transform .5s ease, box-shadow .5s ease;
-    }
-    .slide--hero img:hover{
-      transform: scale(1.02);
-      box-shadow: 0 10px 44px var(--shadow);
-    }
+  @media (prefers-reduced-motion: reduce){ .artifact-track{ animation:none !important; } }
+  @keyframes scrollLoop{ from{ transform:translateX(0);} to{ transform:translateX(var(--scroll-end, -50%)); } }
 
-    /* Bone card slide */
-    .note-card{
-      width:min(880px, 88%);
-      background: var(--card-bone);
-      color: var(--card-text);
-      border-radius: 14px;
-      padding: clamp(18px, 3.2vw, 28px);
-      line-height: 1.55;
-      box-shadow: 0 8px 28px rgba(0,0,0,.25);
-      border: 1px solid rgba(0,0,0,.06);
-    }
-    .note-card h3{
-      margin:0 0 .5rem 0;
-      font-weight: 600;
-      letter-spacing: .02em;
-    }
-    .note-card p{
-      margin:.35rem 0;
-    }
-    .note-meta{
-      margin-top: .75rem;
-      font-size:.9rem;
-      opacity:.7;
-    }
-
-    /* Controls */
-    .ctrl{
-      position:absolute; top:50%; transform:translateY(-50%);
-      width:44px; height:44px; border-radius:999px;
-      background: rgba(0,0,0,.35);
-      color:#fff; border:none; cursor:pointer;
-      display:flex; align-items:center; justify-content:center;
-      backdrop-filter: blur(2px);
-      transition: opacity .2s ease, background .2s ease;
-    }
-    .ctrl:hover{ background: rgba(0,0,0,.5); }
-    .prev{ left:12px; }
-    .next{ right:12px; }
-
-    /* Dots */
-    .dots{
-      position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
-      display:flex; gap:8px;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: rgba(255,255,255,.4);
-      transition: transform .2s ease, background .2s ease;
-    }
-    .dot.active{
-      background:#fff;
-      transform: scale(1.25);
-    }
-
-    /* Footer */
-    footer{
-      position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
-      font-size:.85rem; letter-spacing:.04em; opacity:.75;
-      user-select:none;
-    }
-  </style>
+  .mark{ position:fixed; right:18px; bottom:18px; width:22px; height:22px; border:2px solid #C5A76C; border-top:none; border-left:none; opacity:.9; }
+</style>
 </head>
+<body>
 
-<!-- Change field mode here: warm | balanced | cool | white -->
-<body class="balanced">
-  <div class="slider" id="slider">
-    <div class="slides" id="slides" style="--x:0%">
-      <!-- Slide 1: Hero image -->
-      <section class="slide slide--hero">
-        <img src="fe-card.png" alt="Fig Ellis Card">
-      </section>
+<div class="artifact-feed" aria-label="Artifact Feed — Continuous">
+  <div class="artifact-track" id="artifactTrack"></div>
+</div>
 
-      <!-- Slide 2: Bone note card -->
-      <section class="slide">
-        <article class="note-card">
-          <h3>FIELD LOG — Reflection</h3>
-          <p>Today’s energy felt like a pivot. Less noise, more signal. I kept the frame simple and let the system breathe.</p>
-          <p>Design note: bone card on charcoal reads as calm authority. Keep it. Use this for short excerpts, micro-prompts, or daily anchors.</p>
-          <div class="note-meta">No. 2025-1109 · Balanced Field</div>
-        </article>
-      </section>
+<div class="wrap">
+  <main class="card" role="main">
+    <section class="brand">
+      <img src="/assets/fige-tile.png" alt="Fig Ellis emblem tile" />
+      <div class="copy">
+        <h1>Fig Ellis</h1>
+        <p>Architectural simplicity · living system. Design, fieldworks, and tools — <em>designed in field light</em>.</p>
+        <p class="meta">© 2025 Figellis, Inc. · Soft System Gold text (#C5A76C) on Cool Field Slate (#1E2328).</p>
+        <p class="meta"><a href="/library/">Enter the Library</a> · <a href="/about/">About</a></p>
+      </div>
+    </section>
+  </main>
+</div>
 
-      <!-- Slide 3: Another bone card (example) -->
-      <section class="slide">
-        <article class="note-card">
-          <h3>Prompt Seed — “Pulse + Stillness”</h3>
-          <p>Write a 60-word micro-caption about choosing one small action that returns you to the present. No advice, only resonance.</p>
-          <div class="note-meta">Draft · For Channel Field</div>
-        </article>
-      </section>
-    </div>
+<span class="mark" aria-hidden="true"></span>
+<div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
 
-    <!-- Controls -->
-    <button class="ctrl prev" aria-label="Previous slide" id="prev">‹</button>
-    <button class="ctrl next" aria-label="Next slide" id="next">›</button>
+<script>
+  const artifacts = [
+    { src: "/assets/feed/noir-plant-01.png", alt: "Artifact 01", desc: "Artifact 01 — placeholder cinematic tile."},
+    { src: "/assets/feed/noir-plant-02.png", alt: "Artifact 02", desc: "Artifact 02 — placeholder cinematic tile."},
+    { src: "/assets/feed/noir-plant-03.png", alt: "Artifact 03", desc: "Artifact 03 — placeholder cinematic tile."},
+    { src: "/assets/feed/noir-plant-04.png", alt: "Artifact 04", desc: "Artifact 04 — placeholder cinematic tile."},
+  ];
 
-    <!-- Dots -->
-    <div class="dots" id="dots" aria-hidden="true"></div>
-  </div>
+  const track = document.getElementById('artifactTrack');
+  const tooltip = document.getElementById('tooltip');
 
-  <footer>© 2025 Figellis, Inc. — designed in field light</footer>
+  function buildSequence(){
+    const frag = document.createDocumentFragment();
+    artifacts.forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'artifact';
+      a.href = item.href || '#';
+      a.setAttribute('aria-label', item.alt);
+      const img = document.createElement('img');
+      img.src = item.src; img.alt = item.alt;
+      a.appendChild(img);
 
-  <script>
-    // Tiny slider
-    const slides   = document.getElementById('slides');
-    const prevBtn  = document.getElementById('prev');
-    const nextBtn  = document.getElementById('next');
-    const dotsWrap = document.getElementById('dots');
-    const total    = slides.children.length;
-    let i = 0;
+      a.addEventListener('mouseenter', () => { tooltip.textContent = item.desc || ''; tooltip.style.opacity='1'; });
+      a.addEventListener('mousemove', (e) => { tooltip.style.left = e.clientX + 'px'; tooltip.style.top = e.clientY + 'px'; });
+      a.addEventListener('mouseleave', () => { tooltip.style.opacity='0'; });
 
-    // Build dots
-    for(let d=0; d<total; d++){
-      const dot = document.createElement('span');
-      dot.className = 'dot' + (d===0 ? ' active' : '');
-      dot.addEventListener('click', ()=>go(d));
-      dotsWrap.appendChild(dot);
+      frag.appendChild(a);
+    });
+    return frag;
+  }
+
+  function populateTrack(){
+    track.innerHTML='';
+    track.appendChild(buildSequence());
+    track.appendChild(buildSequence());
+  }
+
+  function setAnimation(){
+    const items = track.children;
+    if(!items.length) return;
+    let firstWidth = 0;
+    for(let i=0;i<artifacts.length && i<items.length;i++){
+      firstWidth += items[i].getBoundingClientRect().width;
+      if(i < artifacts.length-1){ firstWidth += parseFloat(getComputedStyle(track).gap) || 0; }
     }
-    const dots = [...dotsWrap.children];
+    const pps = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--speed-pps')) || 30;
+    const duration = Math.max(10, firstWidth / pps);
+    track.style.setProperty('--scroll-end', `-${firstWidth}px`);
+    track.style.animation = `scrollLoop ${duration}s linear infinite`;
+  }
 
-    function go(n){
-      i = (n + total) % total;
-      slides.style.setProperty('--x', `${-100 * i}%`);
-      dots.forEach((el,idx)=>el.classList.toggle('active', idx===i));
-    }
-    prevBtn.addEventListener('click', ()=>go(i-1));
-    nextBtn.addEventListener('click', ()=>go(i+1));
+  const feed = document.querySelector('.artifact-feed');
+  feed.addEventListener('mouseenter', () => track.style.animationPlayState='paused');
+  feed.addEventListener('mouseleave', () => track.style.animationPlayState='running');
 
-    // Optional auto-advance (comment out if you don’t want it)
-    // setInterval(()=>go(i+1), 8000);
-  </script>
+  populateTrack();
+  const imgs = Array.from(track.querySelectorAll('img'));
+  let loaded = 0;
+  imgs.forEach(img => img.addEventListener('load', () => { loaded++; if(loaded===imgs.length) setAnimation(); }, {once:true}));
+  let resizeTO;
+  window.addEventListener('resize', () => { clearTimeout(resizeTO); resizeTO = setTimeout(setAnimation, 120); });
+</script>
+
+<noscript>Fig Ellis — architectural simplicity meets living system.</noscript>
 </body>
 </html>

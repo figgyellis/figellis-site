@@ -1,18 +1,11 @@
-[Default Path]
-/CORE_SYSTEM/DEPLOYMENT_REFERENCE/
-
-[System Type]
-Deployment Mapping Reference
-
-[Version]
-v0.2 · System Core 02 · Seal 111125
-
-[Compliance]
-Restoration Protocol v1.1 · Auto-Placement v1.0 · Hex Registry Active
-
 [Files]
-README_FOR_HUMANS.md | doc | v0.2 | Active
-manifest.txt | manifest | v0.2 | Active
-
-[Signature]
-FigE Mark V2 · Anchored (bottom-right)
+index.html | page | v0.1
+assets/fige-tile.png | image | placeholder
+assets/feed/noir-plant-01.png | image | placeholder
+assets/feed/noir-plant-02.png | image | placeholder
+assets/feed/noir-plant-03.png | image | placeholder
+assets/feed/noir-plant-04.png | image | placeholder
+assets/css/modes.css | css | optional
+[Hex Locks]
+bg:#1E2328
+text:#C5A76C

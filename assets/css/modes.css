@@ -1,0 +1,5 @@
+:root{ --bg:#1E2328; --text:#C5A76C; } body{background:#1E2328;color:#C5A76C;}
+:root[data-mode="warm"]{--bg:#724026;--text:#C5A76C;}
+:root[data-mode="balanced"]{--bg:#454847;--text:#C5A76C;}
+:root[data-mode="white"]{--bg:#FFFFFF;--text:#1B1E20;}
+a{color:var(--text);border-bottom:1px solid rgba(197,167,108,.35);}
