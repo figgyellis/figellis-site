@@ -1,0 +1,12 @@
+[Default Path] /UTILITIES/DAKBOARD_AUTOMATION/
+[Parent Core] SYSTEM CORE 02 (Seal 111125)
+[Files]
+README_FOR_HUMANS.md      | doc
+PACKAGE_INDEX.md          | index
+manifest.txt              | manifest
+.env.sample               | env
+sync_dakboard.py          | script
+.github/workflows/dakboard-sync.yml | ci
+NOTES.md                  | doc
+[Compliance]
+Restoration v1.1 · Auto-Placement v1.0 · Hex Registry Active
